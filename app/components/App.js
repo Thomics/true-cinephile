@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import MovieContainer from './MovieContainer';
+import Search from './Search';
 
 
 export default class App extends Component {
@@ -10,7 +11,7 @@ export default class App extends Component {
     super(props)
 
     this.state = {
-      movieID: 489 //Default movie
+      movieID: 500 //Default movie
     }
   }
 
@@ -18,7 +19,8 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <MovieContainer>Hello world</MovieContainer>
+        <MovieContainer data= {this.state} fetchApi = {this.fetchMovieID.bind(this)}>Hello world</MovieContainer>
+        <Search></Search>
       </div>
     );
   }
@@ -48,6 +50,11 @@ export default class App extends Component {
 
     });
 
+  }
+
+  fetchMovieID(movieID) {
+    var url = `https://api.themoviedb.org/3/movie/${movieID}?api_key=f6d14169d40228dbf6f63c2a7f56ce70`;
+    this.fetchApi(url);
   }
 
 

@@ -18,6 +18,8 @@ export default class Search extends React.Component {
 
   handleChange(event) {
     this.setState({movieName: event.target.value});
+
+    console.log(event.target.value);
   }
 
 
@@ -30,6 +32,7 @@ render() {
           <input type="text" value={this.state.movieName} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
+        {this.state.movieName}
       </form>
     )
   }

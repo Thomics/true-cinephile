@@ -11,7 +11,7 @@ export default class App extends Component {
     super(props)
 
     this.state = {
-      original_title: "Goodwill Hunting" //Default movie
+      movieName: "Shrek" //Default movie
     }
   }
 
@@ -19,7 +19,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <MovieContainer data= {this.state} >Hello world</MovieContainer>
+        <MovieContainer data= {this.state} ></MovieContainer>
         <Search fetchApi = {this.fetchApi}></Search>
       </div>
     );
@@ -27,8 +27,13 @@ export default class App extends Component {
 
 
   fetchApi(url) {
+    console.log('mounted');
+    console.log(url);
 
-    fetch(url).then((res) => res.json()).then((data) => {
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        var data = data.results[0];
       console.log(data);
 
       this.setState = ({
@@ -38,7 +43,7 @@ export default class App extends Component {
         homepage: data.homepage,
         imdbId: data.imdb_id,
         movieID: data.id,
-        original_title: data.original_title,
+        movieName: data.original_title,
         overview: data.overview,
         poster: data.poster_path,
         release: data.release_date,
@@ -53,8 +58,8 @@ export default class App extends Component {
 
   }
 
-  fetchMovieID(movieID) {
-    var url = `https://api.themoviedb.org/3/movie/${movieID}?api_key=f6d14169d40228dbf6f63c2a7f56ce70`;
+  componentDidMount() {
+    var url = `https://api.themoviedb.org/3/search/movie?query=${this.state.movieName}&api_key=f6d14169d40228dbf6f63c2a7f56ce70`;
     this.fetchApi(url);
   }
 

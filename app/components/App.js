@@ -11,7 +11,7 @@ export default class App extends Component {
     super(props)
 
     this.state = {
-      movieID: 500 //Default movie
+      original_title: "Goodwill Hunting" //Default movie
     }
   }
 
@@ -19,11 +19,12 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <MovieContainer data= {this.state} fetchApi = {this.fetchMovieID.bind(this)}>Hello world</MovieContainer>
-        <Search></Search>
+        <MovieContainer data= {this.state} >Hello world</MovieContainer>
+        <Search fetchApi = {this.fetchApi}></Search>
       </div>
     );
   }
+
 
   fetchApi(url) {
 

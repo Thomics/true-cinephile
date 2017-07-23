@@ -8,10 +8,11 @@ export default class App extends Component {
 
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      movieName: "Shrek" //Default movie
+      movieName: "Dumb and Dumber", //Default movie
+      movie: {}
     }
   }
 
@@ -20,7 +21,7 @@ export default class App extends Component {
     return (
       <div>
         <MovieContainer data= {this.state} ></MovieContainer>
-        <Search fetchApi = {this.fetchApi}></Search>
+        <Search fetchApi = {this.fetchApi} movie = {this.state.movie} changeMovie = {this.changeMovie.bind(this)} ></Search>
       </div>
     );
   }
@@ -56,6 +57,10 @@ export default class App extends Component {
 
     });
 
+  }
+
+  changeMovie(url) {
+    this.fetchApi(url);
   }
 
   componentDidMount() {

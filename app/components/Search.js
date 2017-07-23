@@ -5,6 +5,7 @@ export default class Search extends React.Component {
 
   constructor(props) {
     super(props);
+    console.log(props);
     this.state= { movieName: '' };
 
     this.handleChange = this.handleChange.bind(this);
@@ -14,12 +15,17 @@ export default class Search extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    //props.movie = props.fetchApi(`https://api.themoviedb.org/3/search/movie?query=${this.state.movieName}&api_key=f6d14169d40228dbf6f63c2a7f56ce70`);
+
+    console.log(this.state.movieName);
+    console.log(21);
+
+    this.props.changeMovie(`https://api.themoviedb.org/3/search/movie?query=${this.state.movieName}&api_key=f6d14169d40228dbf6f63c2a7f56ce70`);
+
   }
 
   handleChange(event) {
     this.setState({movieName: event.target.value});
-
-    console.log(event.target.value);
   }
 
 
@@ -38,15 +44,3 @@ render() {
   }
 
 }
-
-//render() {
-//  return (
-//    <form onSubmit={this.handleSubmit}>
-//      <label>
-//        Name:
-//        <input type="text" value={this.state.value} onChange={this.handleChange} />
-//      </label>
-//      <input type="submit" value="Submit" />
-//    </form>
-//  );
-//}

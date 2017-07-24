@@ -11,7 +11,7 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      movieName: "Dumb and Dumber" //Default movie
+      movieName: "Shrek" //Default movie
     }
   }
 
@@ -26,19 +26,20 @@ export default class App extends Component {
     /*Styling*/
 
     var movieContainerStyle = {
-      width: '80%',
+      width: '75%',
       height: '85vh',
-      margin: '13vh auto 0 auto',
+      margin: '10vh auto 0px auto',
       background: 'rgba(25,25,25,.8)'
     };
 
-    //url(https://image.tmdb.org/t/p/original/2BkcMxgEq7i5x69Q6w77JeEewWr.jpg) center / cover no-repeat
     /*End Styling*/
 
     return (
-      <div style={movieContainerStyle}>
-        <MovieContainer data= {this.state} ></MovieContainer>
+      <div>
         <Search movie = {this.state.movieName} changeMovie = {this.changeMovie.bind(this)} ></Search>
+        <div style={movieContainerStyle}>
+          <MovieContainer data= {this.state} ></MovieContainer>
+        </div>
       </div>
     );
   }

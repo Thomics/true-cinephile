@@ -33,7 +33,7 @@ export default class MovieContainer extends Component {
     }
 
     if ( data.backdrop === null ) {
-      backgroundPoster = 'https://image.tmdb.org/t/p/original/2BkcMxgEq7i5x69Q6w77JeEewWr.jpg';
+      backgroundPoster = 'https://image.tmdb.org/t/p/w500/wBG4kHfhwm3bLwKUFNRByXXv4r2.jpg';
     }
 
 
@@ -43,7 +43,7 @@ export default class MovieContainer extends Component {
     /*Styling*/
 
     var posterStyle = {
-      background: 'url(https://image.tmdb.org/t/p/w500/3PEAkZHa8ehfUkuKbzmQNRTTAAs.jpg) center / cover no-repeat',
+      background: `url(${backgroundPoster}) center / cover no-repeat`,
       'maxHeight': '100%',
     };
 
@@ -60,7 +60,6 @@ export default class MovieContainer extends Component {
   }
 
   componentDidUpdate() {
-    //document.body.style.background = 'url(' + backgroundPoster + ' center / cover no-repeat)';
     document.body.style.backgroundImage = 'linear-gradient(rgba(0,0,0,.85) 15%,rgba(0,0,0,.2) 50%,#000 84%), url(' + backgroundPoster + ')';
   }
 

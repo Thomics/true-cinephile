@@ -6,4 +6,5 @@ import 'whatwg-fetch';
 
 window.React = React;
 
+
 ReactDOM.render(< App />, document.getElementById('app'));

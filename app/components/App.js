@@ -15,10 +15,28 @@ export default class App extends Component {
     }
   }
 
+
+
+
+
   //fetchApi={this.fetchApi('https://api.themoviedb.org/3/movie/489?api_key=f6d14169d40228dbf6f63c2a7f56ce70')}
   render() {
+
+
+    /*Styling*/
+
+    var movieContainerStyle = {
+      width: '80%',
+      height: '85vh',
+      margin: '13vh auto 0 auto',
+      background: 'rgba(25,25,25,.8)'
+    };
+
+    //url(https://image.tmdb.org/t/p/original/2BkcMxgEq7i5x69Q6w77JeEewWr.jpg) center / cover no-repeat
+    /*End Styling*/
+
     return (
-      <div>
+      <div style={movieContainerStyle}>
         <MovieContainer data= {this.state} ></MovieContainer>
         <Search movie = {this.state.movieName} changeMovie = {this.changeMovie.bind(this)} ></Search>
       </div>

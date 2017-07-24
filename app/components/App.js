@@ -11,8 +11,7 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      movieName: "Dumb and Dumber", //Default movie
-      movie: {}
+      movieName: "Dumb and Dumber" //Default movie
     }
   }
 
@@ -21,43 +20,47 @@ export default class App extends Component {
     return (
       <div>
         <MovieContainer data= {this.state} ></MovieContainer>
-        <Search fetchApi = {this.fetchApi} movie = {this.state.movie} changeMovie = {this.changeMovie.bind(this)} ></Search>
+        <Search movie = {this.state.movieName} changeMovie = {this.changeMovie.bind(this)} ></Search>
       </div>
     );
   }
 
 
   fetchApi(url) {
-    console.log('mounted');
+
     console.log(url);
+    console.log('This is fetchApi');
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        var data = data.results[0];
-      console.log(data);
 
-      this.setState = ({
-        backdrop: data.backdrop_path,
-        budget: data.budget,
-        genre: data.genres,
-        homepage: data.homepage,
-        imdbId: data.imdb_id,
-        movieID: data.id,
-        movieName: data.original_title,
-        overview: data.overview,
-        poster: data.poster_path,
-        release: data.release_date,
-        revenue: data.revenue,
-        runtime: data.runtime,
-        tagline: data.tagline,
-        vote: data.vote_average,
-        voteCount: data.vote_count
-      });
+        var data = data.results[0];
+        console.log(data);
+
+        this.setState({
+          backdrop: data.backdrop_path,
+          budget: data.budget,
+          genre: data.genres,
+          homepage: data.homepage,
+          imdbId: data.imdb_id,
+          movieID: data.id,
+          movieName: data.original_title,
+          overview: data.overview,
+          poster: data.poster_path,
+          release: data.release_date,
+          revenue: data.revenue,
+          runtime: data.runtime,
+          tagline: data.tagline,
+          vote: data.vote_average,
+          voteCount: data.vote_count
+        });
 
     });
 
   }
+
+
 
   changeMovie(url) {
     this.fetchApi(url);

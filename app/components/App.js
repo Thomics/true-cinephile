@@ -25,6 +25,7 @@ export default class App extends Component {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
 
 
         this.setState({
@@ -58,7 +59,6 @@ export default class App extends Component {
 
 
       var data = data.results[0];
-      console.log(data);
       this.setState({
         movieId: data.id
       });

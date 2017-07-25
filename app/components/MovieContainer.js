@@ -53,7 +53,7 @@ export default class MovieContainer extends Component {
 
 
     return(
-      <img src={poster} style={posterStyle} />
+      <a href={data.homepage} target='_blank'><img src={poster} style={posterStyle} /></a>
     )
   }
 

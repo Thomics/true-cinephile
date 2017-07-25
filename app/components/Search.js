@@ -29,21 +29,24 @@ render() {
   /*Styling*/
 
   var formStyle = {
-    width: '75%',
     margin: '0 auto'
   };
+
+
 
 
   var textStyle = {
     border: 'none',
     borderBottom: '1px solid rgba(255,255,255,.8)',
     background: 'rgba(0,0,0,0)',
-    width: '61%',
+    width: '50%',
     color: '#fff',
-    float: 'right',
+    float: 'left',
     marginTop: '5vh',
+    margin: '5vh 0 0 4%',
     fontSize: '24px'
   };
+
 
   /*End Styling*/
 
@@ -51,7 +54,6 @@ render() {
     return (
       <form onSubmit={this.handleSubmit} style={formStyle}>
         <input type="text" value={this.state.movieName} onChange={this.handleChange} style={textStyle} placeholder="Search a Movie" />
-        <input type="submit" value="Submit" />
       </form>
     )
   }

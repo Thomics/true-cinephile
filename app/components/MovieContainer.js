@@ -33,6 +33,7 @@ export default class MovieContainer extends Component {
     }
 
     if ( data.backdrop === null ) {
+      console.log('its null');
       backgroundPoster = 'https://image.tmdb.org/t/p/w500/wBG4kHfhwm3bLwKUFNRByXXv4r2.jpg';
     }
 
@@ -45,6 +46,7 @@ export default class MovieContainer extends Component {
     var posterStyle = {
       background: `url(${backgroundPoster}) center / cover no-repeat`,
       'maxHeight': '100%',
+      float: 'left'
     };
 
 

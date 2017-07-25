@@ -27,8 +27,8 @@ export default class App extends Component {
 
     var movieContainerStyle = {
       width: '75%',
-      height: '85vh',
-      margin: '10vh auto 0px auto',
+      height: '90vh',
+      margin: '5vh auto 0px auto',
       background: 'rgba(25,25,25,.8)'
     };
 
@@ -36,9 +36,10 @@ export default class App extends Component {
 
     return (
       <div>
-        <Search movie = {this.state.movieName} changeMovie = {this.changeMovie.bind(this)} ></Search>
+
         <div style={movieContainerStyle}>
           <MovieContainer data= {this.state} ></MovieContainer>
+          <Search movie = {this.state.movieName} changeMovie = {this.changeMovie.bind(this)} ></Search>
         </div>
       </div>
     );

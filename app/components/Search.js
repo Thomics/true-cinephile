@@ -14,7 +14,8 @@ export default class Search extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.changeMovie(`https://api.themoviedb.org/3/search/movie?query=${this.state.movieName}&api_key=f6d14169d40228dbf6f63c2a7f56ce70`);
+    //this.props.changeMovie(`https://api.themoviedb.org/3/search/movie?query=${this.state.movieName}&api_key=f6d14169d40228dbf6f63c2a7f56ce70`);
+    this.props.getMovieId(this.state.movieName);
   }
 
   handleChange(event) {

@@ -8,9 +8,6 @@ export default class MovieContainer extends Component {
   constructor(props) {
     super(props);
 
-    console.log(10);
-    console.log(props);
-
   }
 
 
@@ -33,7 +30,6 @@ export default class MovieContainer extends Component {
     }
 
     if ( data.backdrop === null ) {
-      console.log('its null');
       backgroundPoster = 'https://image.tmdb.org/t/p/w500/wBG4kHfhwm3bLwKUFNRByXXv4r2.jpg';
     }
 

@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import MovieContainer from './MovieContainer';
 import Search from './Search';
+import MovieInfo from './MovieInfo';
 
 
 export default class App extends Component {
@@ -11,52 +12,20 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      movieName: "Shrek" //Default movie
+      movieName: "Shrek", //Default movie
+      movieId: "808" //Default movie
     }
   }
 
 
 
 
-
-  //fetchApi={this.fetchApi('https://api.themoviedb.org/3/movie/489?api_key=f6d14169d40228dbf6f63c2a7f56ce70')}
-  render() {
-
-
-    /*Styling*/
-
-    var movieContainerStyle = {
-      width: '75%',
-      height: '90vh',
-      margin: '5vh auto 0px auto',
-      background: 'rgba(25,25,25,.8)'
-    };
-
-    /*End Styling*/
-
-    return (
-      <div>
-
-        <div style={movieContainerStyle}>
-          <MovieContainer data= {this.state} ></MovieContainer>
-          <Search movie = {this.state.movieName} changeMovie = {this.changeMovie.bind(this)} ></Search>
-        </div>
-      </div>
-    );
-  }
-
-
   fetchApi(url) {
-
-    console.log(url);
-    console.log('This is fetchApi');
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
 
-        var data = data.results[0];
-        console.log(data);
 
         this.setState({
           backdrop: data.backdrop_path,
@@ -64,7 +33,7 @@ export default class App extends Component {
           genre: data.genres,
           homepage: data.homepage,
           imdbId: data.imdb_id,
-          movieID: data.id,
+          movieId: data.id,
           movieName: data.original_title,
           overview: data.overview,
           poster: data.poster_path,
@@ -81,14 +50,57 @@ export default class App extends Component {
   }
 
 
+  getMovieId(title) {
 
-  changeMovie(url) {
-    this.fetchApi(url);
+    var url = `https://api.themoviedb.org/3/search/movie?query=${title}&api_key=f6d14169d40228dbf6f63c2a7f56ce70`;
+
+    fetch(url).then((response) => response.json()).then((data) => {
+
+
+      var data = data.results[0];
+      console.log(data);
+      this.setState({
+        movieId: data.id
+      });
+
+
+      this.fetchApi(`https://api.themoviedb.org/3/movie/${this.state.movieId}?api_key=f6d14169d40228dbf6f63c2a7f56ce70`);
+
+    });
+
   }
 
   componentDidMount() {
-    var url = `https://api.themoviedb.org/3/search/movie?query=${this.state.movieName}&api_key=f6d14169d40228dbf6f63c2a7f56ce70`;
-    this.fetchApi(url);
+    //var url = `https://api.themoviedb.org/3/search/movie?query=${this.state.movieName}&api_key=f6d14169d40228dbf6f63c2a7f56ce70`;
+    this.getMovieId(this.state.movieName);
+  }
+
+
+
+
+  render() {
+
+
+    /*Styling*/
+
+    var movieContainerStyle = {
+      width: '75%',
+      height: '90vh',
+      margin: '5vh auto 0px auto',
+      background: 'rgba(25,25,25,.8)'
+    };
+
+    /*End Styling*/
+
+
+    return (
+
+      <div style={movieContainerStyle}>
+        <MovieContainer data= {this.state} ></MovieContainer>
+        <Search movie = {this.state.movieName} getMovieId = {this.getMovieId.bind(this)} ></Search>
+        <MovieInfo data={this.state}></MovieInfo>
+      </div>
+    );
   }
 
 

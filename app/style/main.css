@@ -3,6 +3,7 @@ body {
   height: 95vh;
   font-size: 14px;
   background: center / cover;
+  font-family: 'Roboto', sans-serif;
 }
 
 input:focus,

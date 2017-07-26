@@ -44,8 +44,9 @@ export default class MovieInfo extends React.Component {
       float: 'left',
       width: '52%',
       height: '69vh',
-      margin: '4vh 0 0 3%',
-      padding: '3vh 0 0 0'
+      margin: '1vh 0 0 3%',
+      padding: '3vh 0 0 0',
+      position: 'relative'
     };
 
     //Style the title of the movie
@@ -69,7 +70,9 @@ export default class MovieInfo extends React.Component {
       fontSize: '16px',
       lineHeight: '22px',
       marginTop: '27px',
-      textAlign: 'justify'
+      textAlign: 'justify',
+      maxHeight: '27vh',
+      overflow: 'scroll'
     };
 
     var filmDetailContainer = {
@@ -95,6 +98,11 @@ export default class MovieInfo extends React.Component {
 
     var bottomLinks = {
       color: '#fff'
+    };
+
+    var bottomLinksContainer = {
+      position: 'absolute',
+      bottom: 0
     }
 
     /*End Styling*/
@@ -128,7 +136,7 @@ export default class MovieInfo extends React.Component {
           <p style={movieStats}>{release}</p>
         </div>
 
-        <div>
+        <div style={bottomLinksContainer}>
           <a href={imdb} target='_blank' style={bottomLinks}>IMDB</a>
           &nbsp;&nbsp; | &nbsp;&nbsp;
           <a href={amazon} target='_blank' style={bottomLinks}>Search Amazon</a>

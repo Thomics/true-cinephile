@@ -44,7 +44,7 @@ render() {
     color: '#fff',
     float: 'left',
     marginTop: '5vh',
-    margin: '5vh 0 0 4%',
+    margin: '4vh 0 0 4%',
     fontSize: '24px'
   };
 

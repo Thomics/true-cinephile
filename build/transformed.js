@@ -22416,7 +22416,7 @@ module.exports = ReactDOMInvalidARIAHook;
 
 
 
-class App extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
   constructor(props) {
     super(props);
@@ -22511,7 +22511,7 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
 var backgroundPoster;
 
-class MovieContainer extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+class MovieContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
   constructor(props) {
     super(props);
@@ -22634,7 +22634,7 @@ class Search extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
 
 
-class MovieInfo extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+class MovieInfo extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
   constructor(props) {
     super(props);

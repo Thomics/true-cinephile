@@ -42,7 +42,7 @@ export default class App extends Component {
           revenue: data.revenue,
           runtime: data.runtime,
           tagline: data.tagline,
-          vote: data.vote_average,
+          rating: data.vote_average,
           voteCount: data.vote_count
         });
 

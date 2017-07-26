@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 var backgroundPoster;
 
 
-export default class MovieContainer extends Component {
+export default class MovieContainer extends React.Component {
 
   constructor(props) {
     super(props);

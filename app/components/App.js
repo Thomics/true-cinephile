@@ -4,7 +4,6 @@ import MovieContainer from './MovieContainer';
 import Search from './Search';
 import MovieInfo from './MovieInfo';
 
-
 export default class App extends Component {
 
 
@@ -59,19 +58,24 @@ export default class App extends Component {
 
 
       var data = data.results[0];
-      this.setState({
-        movieId: data.id
-      });
+      console.log(data);
 
+      //If the movie exists search for the movie id.
+      if(data) {
+        this.setState({
+          movieId: data.id
+        });
+        this.fetchApi(`https://api.themoviedb.org/3/movie/${this.state.movieId}?api_key=f6d14169d40228dbf6f63c2a7f56ce70`);
+      } else {
+        alert('The movie: ' + title + ' doesn\'t seem to be in the database');
+      }
 
-      this.fetchApi(`https://api.themoviedb.org/3/movie/${this.state.movieId}?api_key=f6d14169d40228dbf6f63c2a7f56ce70`);
 
     });
 
   }
 
   componentDidMount() {
-    //var url = `https://api.themoviedb.org/3/search/movie?query=${this.state.movieName}&api_key=f6d14169d40228dbf6f63c2a7f56ce70`;
     this.getMovieId(this.state.movieName);
   }
 

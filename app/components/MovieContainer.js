@@ -7,7 +7,6 @@ export default class MovieContainer extends React.Component {
 
   constructor(props) {
     super(props);
-
   }
 
 
@@ -31,11 +30,13 @@ export default class MovieContainer extends React.Component {
 
 
     return(
-      <a target='_blank'><img src={poster} style={posterStyle} /></a>
+      <a target='_blank'><img src={poster} style={posterStyle} alt='Movie Poster' /></a>
     )
   }
 
+
   componentDidUpdate() {
+    //Sets the background image of the site.
     document.body.style.background = 'linear-gradient(rgba(0,0,0,.85) 15%,rgba(0,0,0,.2) 50%,#000 84%), url(' + backgroundPoster + ') center / cover no-repeat';
   }
 

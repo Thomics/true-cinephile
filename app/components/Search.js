@@ -50,8 +50,17 @@ render() {
 
 
     return (
-      <form onSubmit={this.handleSubmit} style={formStyle}>
-        <input type="text" value={this.state.movieName} onChange={this.handleChange} style={textStyle} placeholder="Search a Movie" />
+      <form
+        onSubmit={this.handleSubmit}
+        style={formStyle}
+      >
+        <input
+          type="text"
+          value={this.state.movieName}
+          onChange={this.handleChange}
+          placeholder="Search a Movie"
+          style={textStyle}
+        />
       </form>
     )
   }

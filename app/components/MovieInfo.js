@@ -86,7 +86,7 @@ export default class MovieInfo extends React.Component {
       marginTop: '3vh',
       textAlign: 'justify',
       maxHeight: '22vh',
-      overflow: 'hidden'
+      overflow: 'scroll'
     };
 
 
@@ -114,7 +114,8 @@ export default class MovieInfo extends React.Component {
     };
 
     var bottomLinks = {
-      color: '#fff'
+      color: '#fff',
+      textDecoration: 'none'
     };
 
     var bottomLinksContainer = {
@@ -157,8 +158,9 @@ export default class MovieInfo extends React.Component {
           <a href={imdb} target='_blank' style={bottomLinks}>IMDB</a>
           &nbsp;&nbsp; | &nbsp;&nbsp;
           <a href={amazon} target='_blank' style={bottomLinks}>Search Amazon</a>
-          &nbsp;&nbsp; | &nbsp;&nbsp;
-          <a href={movieHomepage} target='_blank' style={bottomLinks}>{movieName}'s Website</a>
+
+
+          {data.homepage && <a href={movieHomepage} target='_blank' style={bottomLinks}>&nbsp;&nbsp; | &nbsp;&nbsp;{movieName}'s Website</a>}
         </div>
 
       </div>

@@ -11,30 +11,12 @@ export default class MovieContainer extends React.Component {
   }
 
 
-
-
   render() {
-
-
-
 
     var data = this.props.data;
 
     var poster = 'https://image.tmdb.org/t/p/w500' + data.poster;
     backgroundPoster = 'https://image.tmdb.org/t/p/original' + data.backdrop;
-
-
-
-    if ( data.poster === null ) {
-      poster = 'https://image.tmdb.org/t/p/w500/3PEAkZHa8ehfUkuKbzmQNRTTAAs.jpg';
-    }
-
-    if ( data.backdrop === null ) {
-      backgroundPoster = 'https://image.tmdb.org/t/p/w500/wBG4kHfhwm3bLwKUFNRByXXv4r2.jpg';
-    }
-
-
-
 
 
     /*Styling*/
@@ -45,20 +27,16 @@ export default class MovieContainer extends React.Component {
       float: 'left'
     };
 
-
-
     /*End Styling*/
 
 
-
-
     return(
-      <a href={data.homepage} target='_blank'><img src={poster} style={posterStyle} /></a>
+      <a target='_blank'><img src={poster} style={posterStyle} /></a>
     )
   }
 
   componentDidUpdate() {
-    document.body.style.backgroundImage = 'linear-gradient(rgba(0,0,0,.85) 15%,rgba(0,0,0,.2) 50%,#000 84%), url(' + backgroundPoster + ')';
+    document.body.style.background = 'linear-gradient(rgba(0,0,0,.85) 15%,rgba(0,0,0,.2) 50%,#000 84%), url(' + backgroundPoster + ') center / cover no-repeat';
   }
 
 }

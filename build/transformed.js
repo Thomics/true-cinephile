@@ -22416,7 +22416,7 @@ module.exports = ReactDOMInvalidARIAHook;
 
 
 
-class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+class App extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
   constructor(props) {
     super(props);
@@ -22446,7 +22446,7 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
         revenue: data.revenue,
         runtime: data.runtime,
         tagline: data.tagline,
-        vote: data.vote_average,
+        rating: data.vote_average,
         voteCount: data.vote_count
       });
     });
@@ -22524,14 +22524,6 @@ class MovieContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
     var poster = 'https://image.tmdb.org/t/p/w500' + data.poster;
     backgroundPoster = 'https://image.tmdb.org/t/p/original' + data.backdrop;
 
-    if (data.poster === null) {
-      poster = 'https://image.tmdb.org/t/p/w500/3PEAkZHa8ehfUkuKbzmQNRTTAAs.jpg';
-    }
-
-    if (data.backdrop === null) {
-      backgroundPoster = 'https://image.tmdb.org/t/p/w500/wBG4kHfhwm3bLwKUFNRByXXv4r2.jpg';
-    }
-
     /*Styling*/
 
     var posterStyle = {
@@ -22544,13 +22536,13 @@ class MovieContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'a',
-      { href: data.homepage, target: '_blank' },
+      { target: '_blank' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: poster, style: posterStyle })
     );
   }
 
   componentDidUpdate() {
-    document.body.style.backgroundImage = 'linear-gradient(rgba(0,0,0,.85) 15%,rgba(0,0,0,.2) 50%,#000 84%), url(' + backgroundPoster + ')';
+    document.body.style.background = 'linear-gradient(rgba(0,0,0,.85) 15%,rgba(0,0,0,.2) 50%,#000 84%), url(' + backgroundPoster + ') center / cover no-repeat';
   }
 
 }
@@ -22581,7 +22573,6 @@ class Search extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    //this.props.changeMovie(`https://api.themoviedb.org/3/search/movie?query=${this.state.movieName}&api_key=f6d14169d40228dbf6f63c2a7f56ce70`);
     this.props.getMovieId(this.state.movieName);
   }
 
@@ -22593,10 +22584,12 @@ class Search extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
     /*Styling*/
 
+    //Style the form
     var formStyle = {
       margin: '0 auto'
     };
 
+    //Styling the input for the movie search
     var textStyle = {
       border: 'none',
       borderBottom: '1px solid rgba(255,255,255,.8)',
@@ -22605,7 +22598,7 @@ class Search extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       color: '#fff',
       float: 'left',
       marginTop: '5vh',
-      margin: '5vh 0 0 4%',
+      margin: '4vh 0 0 3%',
       fontSize: '24px'
     };
 
@@ -22647,6 +22640,17 @@ class MovieInfo extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
     var movieName = data.movieName;
     var movieTagline = data.tagline;
     var overview = data.overview;
+    var featureLength = data.runtime;
+    var rating = data.rating;
+    var release = data.release;
+    var genre = 'genre';
+    var movieHomepage = data.homepage;
+    var imdb = 'http://www.imdb.com/title/' + data.imdbId;
+    var amazon = 'https://www.amazon.com/s/?field-keywords=' + movieName;
+
+    if (data.genre) {
+      genre = data.genre[0].name;
+    }
 
     /*Styling*/
 
@@ -22655,9 +22659,10 @@ class MovieInfo extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       color: '#fff',
       float: 'left',
       width: '52%',
-      height: '69vh',
-      margin: '4vh 0 0 3%',
-      padding: '3vh 0 0 0'
+      height: '75vh',
+      margin: '1vh 0 0 3%',
+      padding: '3vh 0 0 0',
+      position: 'relative'
     };
 
     //Style the title of the movie
@@ -22676,11 +22681,56 @@ class MovieInfo extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       marginTop: '.5vh'
     };
 
+    var overviewFontSize = {
+      fontSize: '16px'
+    };
+
+    if (overview !== undefined) {
+      console.log(overview.length);
+      if (overview.length > 500) {
+        overviewFontSize = {
+          fontSize: '13px'
+        };
+      }
+    }
+
+    //Style the overview paragraph
     var overviewStyle = {
-      fontSize: '16px',
-      lineHeight: '22px',
-      marginTop: '27px',
-      textAlign: 'justify'
+      lineHeight: '20px',
+      marginTop: '3vh',
+      textAlign: 'justify',
+      maxHeight: '22vh',
+      overflow: 'hidden'
+    };
+
+    var filmDetailContainer = {
+      width: '50%',
+      float: 'left',
+      marginTop: '2vh'
+    };
+
+    //Style the movie information tab
+    var h3 = {
+      fontSize: '18px',
+      borderBottom: '2px solid #fff',
+      display: 'inline-block',
+      marginBottom: '4px',
+      lineHeight: '26px',
+      width: '70%',
+      color: '#ee4031'
+    };
+
+    var movieStats = {
+      fontSize: '36px'
+    };
+
+    var bottomLinks = {
+      color: '#fff'
+    };
+
+    var bottomLinksContainer = {
+      position: 'absolute',
+      bottom: 0
     };
 
     /*End Styling*/
@@ -22700,8 +22750,89 @@ class MovieInfo extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'p',
-        { style: overviewStyle },
+        { style: Object.assign(overviewStyle, overviewFontSize) },
         overview
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { style: filmDetailContainer },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'h3',
+          { style: h3 },
+          'Feature Length'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'p',
+          { style: movieStats },
+          featureLength,
+          ' Mins'
+        )
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { style: filmDetailContainer },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'h3',
+          { style: h3 },
+          'Genre'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'p',
+          { style: movieStats },
+          genre
+        )
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { style: filmDetailContainer },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'h3',
+          { style: h3 },
+          'Rating'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'p',
+          { style: movieStats },
+          rating,
+          '/10'
+        )
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { style: filmDetailContainer },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'h3',
+          { style: h3 },
+          'Release Date'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'p',
+          { style: movieStats },
+          release
+        )
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { style: bottomLinksContainer },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'a',
+          { href: imdb, target: '_blank', style: bottomLinks },
+          'IMDB'
+        ),
+        '\xA0\xA0 | \xA0\xA0',
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'a',
+          { href: amazon, target: '_blank', style: bottomLinks },
+          'Search Amazon'
+        ),
+        '\xA0\xA0 | \xA0\xA0',
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'a',
+          { href: movieHomepage, target: '_blank', style: bottomLinks },
+          movieName,
+          '\'s Website'
+        )
       )
     );
   }

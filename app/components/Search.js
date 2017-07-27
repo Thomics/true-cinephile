@@ -14,7 +14,6 @@ export default class Search extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    //this.props.changeMovie(`https://api.themoviedb.org/3/search/movie?query=${this.state.movieName}&api_key=f6d14169d40228dbf6f63c2a7f56ce70`);
     this.props.getMovieId(this.state.movieName);
   }
 
@@ -29,13 +28,12 @@ render() {
 
   /*Styling*/
 
+  //Style the form
   var formStyle = {
     margin: '0 auto'
   };
 
-
-
-
+  //Styling the input for the movie search
   var textStyle = {
     border: 'none',
     borderBottom: '1px solid rgba(255,255,255,.8)',
@@ -44,10 +42,9 @@ render() {
     color: '#fff',
     float: 'left',
     marginTop: '5vh',
-    margin: '4vh 0 0 4%',
+    margin: '4vh 0 0 3%',
     fontSize: '24px'
   };
-
 
   /*End Styling*/
 

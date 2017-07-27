@@ -12,3 +12,10 @@ textarea:focus,
 button:focus {
   outline: none;
 }
+
+.database-logo {
+  width: 50px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

@@ -25,6 +25,7 @@ export default class MovieInfo extends React.Component {
     var movieHomepage = data.homepage;
     var imdb = 'http://www.imdb.com/title/' + data.imdbId;
     var amazon = 'https://www.amazon.com/s/?field-keywords=' + movieName;
+
     if (data.genre) {
       genre = data.genre[0].name;
     }
@@ -33,7 +34,7 @@ export default class MovieInfo extends React.Component {
 
 
 
-    console.log(genre);
+
 
 
     /*Styling*/
@@ -43,7 +44,7 @@ export default class MovieInfo extends React.Component {
       color: '#fff',
       float: 'left',
       width: '52%',
-      height: '69vh',
+      height: '75vh',
       margin: '1vh 0 0 3%',
       padding: '3vh 0 0 0',
       position: 'relative'
@@ -65,20 +66,35 @@ export default class MovieInfo extends React.Component {
       marginTop: '.5vh'
     };
 
+
+    var overviewFontSize = {
+      fontSize: '16px'
+    };
+
+    if( overview !== undefined ) {
+      console.log(overview.length);
+      if (overview.length > 500) {
+        overviewFontSize = {
+          fontSize: '13px'
+        }
+      }
+    }
+
     //Style the overview paragraph
     var overviewStyle = {
-      fontSize: '16px',
-      lineHeight: '22px',
-      marginTop: '27px',
+      lineHeight: '20px',
+      marginTop: '3vh',
       textAlign: 'justify',
-      maxHeight: '27vh',
-      overflow: 'scroll'
+      maxHeight: '22vh',
+      overflow: 'hidden'
     };
+
+
 
     var filmDetailContainer = {
       width: '50%',
       float: 'left',
-      marginTop: '4vh'
+      marginTop: '2vh'
     };
 
     //Style the movie information tab
@@ -88,7 +104,8 @@ export default class MovieInfo extends React.Component {
       display: 'inline-block',
       marginBottom: '4px',
       lineHeight: '26px',
-      width: '70%'
+      width: '70%',
+      color: '#ee4031'
     };
 
 
@@ -103,7 +120,7 @@ export default class MovieInfo extends React.Component {
     var bottomLinksContainer = {
       position: 'absolute',
       bottom: 0
-    }
+    };
 
     /*End Styling*/
 
@@ -113,7 +130,7 @@ export default class MovieInfo extends React.Component {
 
         <h1 style={titleStyle}>{movieName}</h1>
         <h2 style={taglineStyle}>{movieTagline}</h2>
-        <p style={overviewStyle}>{overview}</p>
+        <p style={Object.assign(overviewStyle, overviewFontSize)}>{overview}</p>
         <br />
 
         <div style={filmDetailContainer}>
@@ -141,7 +158,7 @@ export default class MovieInfo extends React.Component {
           &nbsp;&nbsp; | &nbsp;&nbsp;
           <a href={amazon} target='_blank' style={bottomLinks}>Search Amazon</a>
           &nbsp;&nbsp; | &nbsp;&nbsp;
-          <a href={movieHomepage} target='_blank' style={bottomLinks}>{movieName} Website</a>
+          <a href={movieHomepage} target='_blank' style={bottomLinks}>{movieName}'s Website</a>
         </div>
 
       </div>

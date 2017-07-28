@@ -77,6 +77,8 @@ export default class MovieInfo extends React.Component {
         overviewFontSize = {
           fontSize: '13px'
         }
+
+        overview = overview.slice(0,501) + '...';
       }
     }
 
@@ -86,7 +88,7 @@ export default class MovieInfo extends React.Component {
       marginTop: '3vh',
       textAlign: 'justify',
       maxHeight: '22vh',
-      overflow: 'scroll'
+      overflow: 'hidden'
     };
 
 

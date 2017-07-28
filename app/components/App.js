@@ -13,19 +13,17 @@ export default class App extends Component {
     this.state = {
       movieName: "Shrek", //Default movie
       movieId: "808" //Default movie
-    }
+    };
+
+    this.getMovieId = this.getMovieId.bind(this);
+
+
   }
-
-
 
 
   fetchApi(url) {
 
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-
+    fetch(url).then((response) => response.json()).then((data) => {
 
         this.setState({
           backdrop: data.backdrop_path,
@@ -56,7 +54,6 @@ export default class App extends Component {
 
     fetch(url).then((response) => response.json()).then((data) => {
 
-
       var data = data.results[0];
       console.log(data);
 
@@ -70,10 +67,10 @@ export default class App extends Component {
         alert('The movie: ' + title + ' doesn\'t seem to be in the database');
       }
 
-
     });
 
   }
+
 
   componentDidMount() {
     this.getMovieId(this.state.movieName);
@@ -90,6 +87,7 @@ export default class App extends Component {
     var movieContainerStyle = {
       width: '75%',
       height: '90vh',
+      maxHeight: '750px',
       margin: '5vh auto 0px auto',
       background: 'rgba(25,25,25,.8)'
     };
@@ -101,9 +99,10 @@ export default class App extends Component {
 
       <div style={movieContainerStyle}>
         <MovieContainer data= {this.state} ></MovieContainer>
-        <Search movie = {this.state.movieName} getMovieId = {this.getMovieId.bind(this)} ></Search>
+        <Search movie = {this.state.movieName} getMovieId = {this.getMovieId} ></Search>
         <MovieInfo data={this.state}></MovieInfo>
       </div>
+
     );
   }
 

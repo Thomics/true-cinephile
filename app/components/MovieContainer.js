@@ -22,7 +22,8 @@ export default class MovieContainer extends React.Component {
 
     var posterStyle = {
       background: `url(${backgroundPoster}) center / cover no-repeat`,
-      'maxHeight': '100%',
+      height: '100%',
+      'maxHeight': '750px',
       float: 'left'
     };
 

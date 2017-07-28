@@ -5,7 +5,6 @@ var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
   inject: 'body'
 });
 
-
 module.exports = {
   entry: __dirname + '/app/index.js',
   module: {
@@ -14,13 +13,6 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
-      },
-      {
-        test: /\.css$/,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-        ]
       }
     ]
   },
@@ -28,5 +20,7 @@ module.exports = {
     filename: 'transformed.js',
     path: __dirname + '/build'
   },
-  plugins: [HTMLWebpackPluginConfig]
+  plugins: [
+    HTMLWebpackPluginConfig
+  ]
 };

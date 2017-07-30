@@ -26,14 +26,12 @@ export default class MovieInfo extends React.Component {
     var imdb = 'http://www.imdb.com/title/' + data.imdbId;
     var amazon = 'https://www.amazon.com/s/?field-keywords=' + movieName;
 
-    if (data.genre) {
-      genre = data.genre[0].name;
+
+    if (data.genre !== undefined) {
+      if(data.genre.length > 0) {
+        genre = data.genre[0].name;
+      }
     }
-
-
-
-
-
 
 
 
@@ -45,8 +43,7 @@ export default class MovieInfo extends React.Component {
       float: 'left',
       width: '52%',
       height: '75vh',
-      margin: '1vh 0 0 3%',
-      padding: '3vh 0 0 0',
+      margin: '20px 0 0 3%',
       position: 'relative'
     };
 
@@ -62,7 +59,7 @@ export default class MovieInfo extends React.Component {
     var taglineStyle = {
       fontSize: '22px',
       color: '#ee4035',//#ff7676 //#ff6f69 //#ee4035 //#f96161
-      letterSpacing: '2px',
+      letterSpacing: '1px',
       marginTop: '.5vh'
     };
 
@@ -85,7 +82,7 @@ export default class MovieInfo extends React.Component {
     //Style the overview paragraph
     var overviewStyle = {
       lineHeight: '20px',
-      marginTop: '3vh',
+      marginTop: '15px',
       textAlign: 'justify',
       maxHeight: '22vh',
       overflow: 'hidden'
@@ -96,7 +93,7 @@ export default class MovieInfo extends React.Component {
     var filmDetailContainer = {
       width: '50%',
       float: 'left',
-      marginTop: '2vh'
+      marginTop: '15px'
     };
 
     //Style the movie information tab

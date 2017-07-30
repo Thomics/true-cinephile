@@ -86,6 +86,7 @@ export default class App extends Component {
 
     var movieContainerStyle = {
       width: '75%',
+      maxWidth: '1100px',
       height: '90vh',
       maxHeight: '750px',
       margin: '5vh auto 0px auto',

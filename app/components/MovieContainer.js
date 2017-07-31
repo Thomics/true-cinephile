@@ -3,10 +3,24 @@ import ReactDOM from 'react-dom';
 var backgroundPoster;
 
 
+/**
+ * The MovieContainer component - container for the poster image and movie information content
+ */
 export default class MovieContainer extends React.Component {
 
+
+  /**
+   * @constructor
+   * @param {object} props - the properties passed from the parent.
+   */
   constructor(props) {
     super(props);
+  }
+
+
+  componentDidUpdate() {
+    //Sets the background image of the site.
+    document.body.style.background = 'linear-gradient(rgba(0,0,0,.85) 15%,rgba(0,0,0,.2) 50%,#000 84%), url(' + backgroundPoster + ') center / cover no-repeat';
   }
 
 
@@ -24,6 +38,7 @@ export default class MovieContainer extends React.Component {
       background: `url(${backgroundPoster}) center / cover no-repeat`,
       height: '100%',
       maxHeight: '750px',
+      maxWidth: '43%',
       float: 'left'
     };
 
@@ -33,12 +48,6 @@ export default class MovieContainer extends React.Component {
     return(
       <a target='_blank'><img src={poster} style={posterStyle} alt='Movie Poster' /></a>
     )
-  }
-
-
-  componentDidUpdate() {
-    //Sets the background image of the site.
-    document.body.style.background = 'linear-gradient(rgba(0,0,0,.85) 15%,rgba(0,0,0,.2) 50%,#000 84%), url(' + backgroundPoster + ') center / cover no-repeat';
   }
 
 }

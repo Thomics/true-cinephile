@@ -1,12 +1,19 @@
-
 import React, { Component } from 'react';
 import MovieContainer from './MovieContainer';
 import Search from './Search';
 import MovieInfo from './MovieInfo';
 
+
+/**
+ * The main constructor for the app.
+ */
 export default class App extends Component {
 
 
+  /**
+   * @constructor
+   * @param {object} props - the properties passed from the parent.
+   */
   constructor(props) {
     super(props);
 
@@ -17,12 +24,15 @@ export default class App extends Component {
 
     this.getMovieId = this.getMovieId.bind(this);
 
-
   }
 
-
+  /**
+   * Retrieves the information about the movie from the api.
+   * @param {string} url - the api url
+   */
   fetchApi(url) {
 
+    //Fetches the url, sends the response back via json and then sets the state.
     fetch(url).then((response) => response.json()).then((data) => {
 
         this.setState({
@@ -48,6 +58,10 @@ export default class App extends Component {
   }
 
 
+  /**
+   * Retrieves the api movie id based off of the movie name.
+   * @param {string} title - the title of the movie
+   */
   getMovieId(title) {
 
     var url = `https://api.themoviedb.org/3/search/movie?query=${title}&api_key=f6d14169d40228dbf6f63c2a7f56ce70`;

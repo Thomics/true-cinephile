@@ -22412,9 +22412,15 @@ module.exports = ReactDOMInvalidARIAHook;
 
 
 
-
+/**
+ * The main constructor for the app.
+ */
 class App extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
+  /**
+   * @constructor
+   * @param {object} props - the properties passed from the parent.
+   */
   constructor(props) {
     super(props);
 
@@ -22426,8 +22432,13 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     this.getMovieId = this.getMovieId.bind(this);
   }
 
+  /**
+   * Retrieves the information about the movie from the api.
+   * @param {string} url - the api url
+   */
   fetchApi(url) {
 
+    //Fetches the url, sends the response back via json and then sets the state.
     fetch(url).then(response => response.json()).then(data => {
 
       this.setState({
@@ -22450,6 +22461,10 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     });
   }
 
+  /**
+   * Retrieves the api movie id based off of the movie name.
+   * @param {string} title - the title of the movie
+   */
   getMovieId(title) {
 
     var url = `https://api.themoviedb.org/3/search/movie?query=${title}&api_key=f6d14169d40228dbf6f63c2a7f56ce70`;
@@ -22481,6 +22496,7 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
     var movieContainerStyle = {
       width: '75%',
+      maxWidth: '1100px',
       height: '90vh',
       maxHeight: '750px',
       margin: '5vh auto 0px auto',
@@ -22515,10 +22531,22 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
 var backgroundPoster;
 
+/**
+ * The MovieContainer component - container for the poster image and movie information content
+ */
 class MovieContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
+  /**
+   * @constructor
+   * @param {object} props - the properties passed from the parent.
+   */
   constructor(props) {
     super(props);
+  }
+
+  componentDidUpdate() {
+    //Sets the background image of the site.
+    document.body.style.background = 'linear-gradient(rgba(0,0,0,.85) 15%,rgba(0,0,0,.2) 50%,#000 84%), url(' + backgroundPoster + ') center / cover no-repeat';
   }
 
   render() {
@@ -22533,7 +22561,8 @@ class MovieContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
     var posterStyle = {
       background: `url(${backgroundPoster}) center / cover no-repeat`,
       height: '100%',
-      'maxHeight': '750px',
+      maxHeight: '750px',
+      maxWidth: '43%',
       float: 'left'
     };
 
@@ -22544,11 +22573,6 @@ class MovieContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
       { target: '_blank' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: poster, style: posterStyle, alt: 'Movie Poster' })
     );
-  }
-
-  componentDidUpdate() {
-    //Sets the background image of the site.
-    document.body.style.background = 'linear-gradient(rgba(0,0,0,.85) 15%,rgba(0,0,0,.2) 50%,#000 84%), url(' + backgroundPoster + ') center / cover no-repeat';
   }
 
 }
@@ -22567,8 +22591,15 @@ class MovieContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
 
 
 
+/**
+ * The Search component - an input that allows the user to search for a movie
+ */
 class Search extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
+  /**
+   * @constructor
+   * @param {object} props - the properties passed from the parent.
+   */
   constructor(props) {
     super(props);
     this.state = { movieName: '' };
@@ -22577,11 +22608,19 @@ class Search extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  /**
+   * When the user submits a movie, searches for the movie by name.
+   * @param {object} event - the event object for when the user submits a movie.
+   */
   handleSubmit(event) {
     event.preventDefault();
     this.props.getMovieId(this.state.movieName);
   }
 
+  /**
+   * When there is a change in the search bar, sets the movieName prop.
+   * @param {object} event - the event object for when the user types in the search bar.
+   */
   handleChange(event) {
     this.setState({ movieName: event.target.value });
   }
@@ -22604,7 +22643,7 @@ class Search extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       color: '#fff',
       float: 'left',
       marginTop: '5vh',
-      margin: '4vh 0 0 3%',
+      margin: '20px 0 0 3%',
       fontSize: '24px'
     };
 
@@ -22642,8 +22681,15 @@ class Search extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
 
 
+/**
+ * The MovieInfo component - contains the information about the movies.
+ */
 class MovieInfo extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
+  /**
+   * @constructor
+   * @param {object} props - the properties passed from the parent.
+   */
   constructor(props) {
     super(props);
   }
@@ -22652,19 +22698,22 @@ class MovieInfo extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
 
     var data = this.props.data;
 
-    var movieName = data.movieName;
-    var movieTagline = data.tagline;
-    var overview = data.overview;
-    var featureLength = data.runtime;
-    var rating = data.rating;
-    var release = data.release;
-    var genre = 'genre';
-    var movieHomepage = data.homepage;
-    var imdb = 'http://www.imdb.com/title/' + data.imdbId;
-    var amazon = 'https://www.amazon.com/s/?field-keywords=' + movieName;
+    var movieName = data.movieName,
+        movieTagline = data.tagline,
+        overview = data.overview,
+        featureLength = data.runtime,
+        rating = data.rating,
+        release = data.release,
+        genre = 'genre',
+        movieHomepage = data.homepage,
+        imdb = 'http://www.imdb.com/title/' + data.imdbId,
+        amazon = 'https://www.amazon.com/s/?field-keywords=' + movieName;
 
-    if (data.genre) {
-      genre = data.genre[0].name;
+    //Some of the movies don't have a genre defined, so to verify before trying to access an index I use an if statement.
+    if (data.genre !== undefined) {
+      if (data.genre.length > 0) {
+        genre = data.genre[0].name;
+      }
     }
 
     /*Styling*/
@@ -22674,9 +22723,9 @@ class MovieInfo extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       color: '#fff',
       float: 'left',
       width: '52%',
-      height: '75vh',
-      margin: '1vh 0 0 3%',
-      padding: '3vh 0 0 0',
+      //height: '75vh',
+      margin: '20px 0 0 3%',
+      padding: '0 0 50px 0',
       position: 'relative'
     };
 
@@ -22692,21 +22741,23 @@ class MovieInfo extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
     var taglineStyle = {
       fontSize: '22px',
       color: '#ee4035', //#ff7676 //#ff6f69 //#ee4035 //#f96161
-      letterSpacing: '2px',
+      letterSpacing: '1px',
       marginTop: '.5vh'
     };
 
+    //Sets the overview font size.
     var overviewFontSize = {
       fontSize: '16px'
     };
 
+    //Sets the overviews font size depending on the length of the overviews text.
     if (overview !== undefined) {
-      console.log(overview.length);
       if (overview.length > 500) {
         overviewFontSize = {
           fontSize: '13px'
         };
 
+        //Truncate the overview if it is above 500 character length.
         overview = overview.slice(0, 501) + '...';
       }
     }
@@ -22714,19 +22765,20 @@ class MovieInfo extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
     //Style the overview paragraph
     var overviewStyle = {
       lineHeight: '20px',
-      marginTop: '3vh',
+      marginTop: '15px',
       textAlign: 'justify',
       maxHeight: '22vh',
       overflow: 'hidden'
     };
 
+    //Style the container that holds the four movie information sections.
     var filmDetailContainer = {
       width: '50%',
       float: 'left',
-      marginTop: '2vh'
+      marginTop: '15px'
     };
 
-    //Style the movie information tab
+    //Style the title of the movie information sections
     var h3 = {
       fontSize: '18px',
       borderBottom: '2px solid #fff',
@@ -22737,15 +22789,18 @@ class MovieInfo extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       color: '#ee4031'
     };
 
+    //Style the content of the movie stats
     var movieStats = {
       fontSize: '36px'
     };
 
+    //Styles the links at the bottom of the movie information container
     var bottomLinks = {
       color: '#fff',
       textDecoration: 'none'
     };
 
+    //Styles the container for the links at the bottom of the movie information container
     var bottomLinksContainer = {
       position: 'absolute',
       bottom: 0

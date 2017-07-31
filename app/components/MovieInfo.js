@@ -116,7 +116,8 @@ export default class MovieInfo extends React.Component {
 
     //Style the content of the movie stats
     var movieStats = {
-      fontSize: '36px'
+      fontSize: '36px',
+      margin: '0'
     };
 
     //Styles the links at the bottom of the movie information container
@@ -125,7 +126,7 @@ export default class MovieInfo extends React.Component {
       textDecoration: 'none'
     };
 
-    //Styles the container for the links at the bottom of the movie information container
+
     var bottomLinksContainer = {
       position: 'absolute',
       bottom: 0

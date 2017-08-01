@@ -58,7 +58,8 @@ export default class Search extends React.Component {
       float: 'left',
       marginTop: '5vh',
       margin: '20px 0 0 3%',
-      fontSize: '24px'
+      fontSize: '24px',
+      fontFamily: 'Roboto, sans-serif'
     };
 
     /*End Styling*/

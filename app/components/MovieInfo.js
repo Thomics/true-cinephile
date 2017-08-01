@@ -59,7 +59,8 @@ export default class MovieInfo extends React.Component {
       fontSize: '46px',
       color: '#fff',
       letterSpacing: '1px',
-      textTransform: 'uppercase'
+      textTransform: 'uppercase',
+      fontFamily: 'Roboto, sans-serif'
     };
 
     //Style the tagline of the movie
@@ -67,7 +68,8 @@ export default class MovieInfo extends React.Component {
       fontSize: '22px',
       color: '#ee4035',//#ff7676 //#ff6f69 //#ee4035 //#f96161
       letterSpacing: '1px',
-      marginTop: '.5vh'
+      marginTop: '.5vh',
+      fontFamily: 'Roboto, sans-serif'
     };
 
     //Sets the overview font size.
@@ -93,7 +95,8 @@ export default class MovieInfo extends React.Component {
       marginTop: '15px',
       textAlign: 'justify',
       maxHeight: '22vh',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      fontFamily: 'Roboto, sans-serif'
     };
 
     //Style the container that holds the four movie information sections.
@@ -111,18 +114,21 @@ export default class MovieInfo extends React.Component {
       marginBottom: '4px',
       lineHeight: '26px',
       width: '70%',
-      color: '#ee4031'
+      color: '#ee4031',
+      fontFamily: 'Roboto, sans-serif'
     };
 
     //Style the content of the movie stats
     var movieStats = {
-      fontSize: '36px'
+      fontSize: '36px',
+      fontFamily: 'Roboto, sans-serif'
     };
 
     //Styles the links at the bottom of the movie information container
     var bottomLinks = {
       color: '#fff',
-      textDecoration: 'none'
+      textDecoration: 'none',
+      fontFamily: 'Roboto, sans-serif'
     };
 
 

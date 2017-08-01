@@ -42,6 +42,10 @@ export default class MovieContainer extends React.Component {
       float: 'left'
     };
 
+    if (data.poster === undefined) {
+      posterStyle.background = ''
+    }
+
     /*End Styling*/
 
 

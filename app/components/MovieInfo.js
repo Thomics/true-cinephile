@@ -77,7 +77,7 @@ export default class MovieInfo extends React.Component {
 
     //Sets the overviews font size depending on the length of the overviews text.
     if( overview !== undefined ) {
-      if (overview.length > 500) {
+      if (overview.length > 500 || movieName.length > 14) {
         overviewFontSize = {
           fontSize: '13px'
         };
@@ -116,8 +116,7 @@ export default class MovieInfo extends React.Component {
 
     //Style the content of the movie stats
     var movieStats = {
-      fontSize: '36px',
-      margin: '0'
+      fontSize: '36px'
     };
 
     //Styles the links at the bottom of the movie information container

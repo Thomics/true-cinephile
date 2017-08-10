@@ -2,7 +2,7 @@
   "name": "true-cinephile",
   "version": "1.0.0",
   "description": "Search for your favorite movie and get a description of the film and some information about it.",
-  "main": "index.js",
+  "main": "app/index.js",
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server",
@@ -11,6 +11,9 @@
   "author": "Thomas Conto",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "path": "^0.12.7",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
@@ -19,11 +22,12 @@
     "babel-loader": "^7.1.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.4",
+    "express-generator": "^4.15.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^2.29.0",
     "jasmine": "^2.7.0",
     "style-loader": "^0.18.2",
-    "webpack": "^3.0.0",
+    "webpack": "^3.5.2",
     "webpack-dev-server": "^2.5.0"
   }
 }

@@ -1,18 +1,17 @@
-module.exports = app;
+"use strict";
 
-
-import express from 'express';
-
-// Initialize http server
+var express = require('express');
 var app = express();
+var path = require('path');
 
-// Handle / route
-app.get('/', function(req, res) {
-  res.send('Hello World!');
+//Middleware to define folder for static files.
+app.use(express.static('public'));
+
+//Capture route
+app.get(function(req, res) {
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
 
-// Launch the server on port 3000
-var server = app.listen(3000, function() {
-  var { address, port } = server.address();
-  console.log(`Listening at http://${address}:${port}`);
+app.listen(3000, function() {
+  console.log('Listening on port 3000');
 });

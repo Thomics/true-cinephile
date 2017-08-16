@@ -1,26 +1,24 @@
-var HTMLWebpackPlugin = require('html-webpack-plugin');
-var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
-  template: __dirname + '/app/index.html',
-  filename: 'index.html',
-  inject: 'body'
-});
+var path = require('path');
+
+const webpack = require('webpack');
 
 module.exports = {
-  entry: __dirname + '/app/index.js',
+  entry: './src/app.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'public')
+  },
+  watch: true,
   module: {
-    rules: [
+    loaders: [
       {
-        test: /\.js$/,
+        test:/\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015', 'stage-1']
+        }
       }
     ]
-  },
-  output: {
-    filename: 'transformed.js',
-    path: __dirname + '/build'
-  },
-  plugins: [
-    HTMLWebpackPluginConfig
-  ]
+  }
 };

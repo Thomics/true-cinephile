@@ -1,7 +1,25 @@
+import {createStore} from 'redux';
+
+// REACT
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
+
+// REDUCERS
+import reducers from './reducers/index';
+
+// ACTIONS
+import {movieActions} from './actions/movieActions';
+
+// COMPONENTS
 import App from './components/App';
 
-window.React = React;
 
-ReactDOM.render(<App />, document.getElementById('app'));
+const store = createStore(reducers);
+
+render(
+  <App />, document.getElementById('app')
+);
+
+store.subscribe(function() {
+  console.log('current state is: ', store.getState());
+});

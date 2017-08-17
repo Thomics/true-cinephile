@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MovieContainer from './MovieContainer';
 import Search from './Search';
 import MovieInfo from './MovieInfo';
@@ -7,7 +7,7 @@ import MovieInfo from './MovieInfo';
 /**
  * The main constructor for the app.
  */
-export default class App extends Component {
+export default class App extends React.Component {
 
 
   /**

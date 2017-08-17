@@ -6,7 +6,7 @@ var backgroundPoster;
 /**
  * The MovieContainer component - container for the poster image and movie information content
  */
-export default class MovieContainer extends React.Component {
+export default class MovieContainer extends Component {
 
 
   /**
@@ -50,7 +50,7 @@ export default class MovieContainer extends React.Component {
 
 
     return(
-      <a target='_blank'><img src={poster} style={posterStyle} alt='Movie Poster' /></a>
+      <img src={poster} style={posterStyle} alt='Movie Poster' />
     )
   }
 

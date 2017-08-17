@@ -1,14 +1,11 @@
 
 // GET A MOVIE
-export function getBooks(){
+export function getMovie(title){
+
+  console.log('moverion');
   return function(dispatch){
-    //axios.get("/api/books")
-    //  .then(function(response){
-    //    dispatch({type:"GET_BOOKS", payload:response.data})
-    //  })
-    //  .catch(function(err){
-    //    dispatch({type:"GET_BOOKS_REJECTED", payload:err})
-    //  })
+
+    console.log('movie gotten');
 
     var url = `https://api.themoviedb.org/3/search/movie?query=${title}&api_key=f6d14169d40228dbf6f63c2a7f56ce70`;
 
@@ -24,7 +21,7 @@ export function getBooks(){
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
-            dispatch({type: 'GET_MOVIE', payload: data});
+            dispatch({type: 'SEARCH_MOVIE', payload: data});
           });
 
       } else {
@@ -32,5 +29,5 @@ export function getBooks(){
       }
     });
 
-    }
+  }
 }

@@ -2,20 +2,22 @@ import React from 'react';
 import MovieContainer from './MovieContainer';
 import Search from './Search';
 import MovieInfo from './MovieInfo';
+import {getMovie} from '../actions/movieActions';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 
 
 /**
  * The main constructor for the app.
  */
-export default class App extends React.Component {
+class App extends React.Component {
 
 
   /**
    * @constructor
-   * @param {object} props - the properties passed from the parent.
    */
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       movieName: "Shrek", //Default movie
@@ -30,32 +32,32 @@ export default class App extends React.Component {
    * Retrieves the information about the movie from the api.
    * @param {string} url - the api url
    */
-  fetchApi(url) {
-
-    //Fetches the url, sends the response back via json and then sets the state.
-    fetch(url).then((response) => response.json()).then((data) => {
-
-        this.setState({
-          backdrop: data.backdrop_path,
-          budget: data.budget,
-          genre: data.genres,
-          homepage: data.homepage,
-          imdbId: data.imdb_id,
-          movieId: data.id,
-          movieName: data.original_title,
-          overview: data.overview,
-          poster: data.poster_path,
-          release: data.release_date,
-          revenue: data.revenue,
-          runtime: data.runtime,
-          tagline: data.tagline,
-          rating: data.vote_average,
-          voteCount: data.vote_count
-        });
-
-    });
-
-  }
+  //fetchApi(url) {
+  //
+  //  //Fetches the url, sends the response back via json and then sets the state.
+  //  fetch(url).then((response) => response.json()).then((data) => {
+  //
+  //      this.setState({
+  //        backdrop: data.backdrop_path,
+  //        budget: data.budget,
+  //        genre: data.genres,
+  //        homepage: data.homepage,
+  //        imdbId: data.imdb_id,
+  //        movieId: data.id,
+  //        movieName: data.original_title,
+  //        overview: data.overview,
+  //        poster: data.poster_path,
+  //        release: data.release_date,
+  //        revenue: data.revenue,
+  //        runtime: data.runtime,
+  //        tagline: data.tagline,
+  //        rating: data.vote_average,
+  //        voteCount: data.vote_count
+  //      });
+  //
+  //  });
+  //
+  //}
 
 
   /**
@@ -85,10 +87,18 @@ export default class App extends React.Component {
 
   }
 
+  //var st = Store.getState();
 
   componentDidMount() {
-    this.getMovieId(this.state.movieName);
+    console.log('comp mounterionoed');
+
+    //this.getMovieId(this.state.movieName);
+    this.props.getMovie('Shrek');
+
+    //this.props.getMovie(this.state.movieName);
   }
+
+
 
 
 
@@ -123,3 +133,21 @@ export default class App extends React.Component {
 
 
 }
+
+//function mapStateToProps(state){
+//  return{
+//
+//  }
+//}
+//
+//
+//function mapDispatchToProps(dispatch){
+//  return bindActionCreators({
+//    getMovie: getMovie
+//  }, dispatch)
+//}
+
+export default App;
+
+
+//export default connect(mapStateToProps, mapDispatchToProps)(App);
